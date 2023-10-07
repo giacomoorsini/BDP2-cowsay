@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN apt update
+RUN apt install -y cowsay
+ENV FILE=messages.txt LOCATION=.
+ENV MOOOD=-w
+ADD $FILE $LOCATION
+CMD sort -R $LOCATION/$FILE | head -n 1 | /usr/games/cowsay $MOOOD

@@ -1,0 +1,8 @@
+FROM ubuntu
+RUN apt update
+RUN apt install -y cowsay
+ENV FILE=messages.txt LOCATION=.
+ENV MOOOD=-w
+ENV TIME=0.5
+ADD $FILE $LOCATION
+CMD while read i; do /usr/games/cowsay $MOOOD "$i"; sleep $TIME ;done < $LOCATION/$FILE

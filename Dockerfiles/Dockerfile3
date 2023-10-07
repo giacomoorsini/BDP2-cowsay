@@ -1,0 +1,6 @@
+FROM ubuntu
+RUN apt update
+RUN apt install -y cowsay
+ENV FILE=messages.txt LOCATION=.
+ADD $FILE $LOCATION
+CMD sort -R $LOCATION/$FILE | head -n 1 | /usr/games/cowsay
